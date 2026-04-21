@@ -10,6 +10,10 @@ app.use("/", (req, res) => {
   res.send("hello from the server");
 });
 
+app.use("/help", (req, res) => {
+  res.send("hello from the customer service");
+});
+
 app.listen(3000, () => {
   console.log("server is listening on port 3000");
 });
