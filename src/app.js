@@ -11,7 +11,7 @@ app.use("/", (req, res) => {
 });
 
 app.use("/help", (req, res) => {
-  res.send("hello from the customer service");
+  res.send("hello from the customer servic");
 });
 
 app.listen(3000, () => {
