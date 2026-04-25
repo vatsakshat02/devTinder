@@ -2,12 +2,12 @@ const express = require("express");
 
 const app = express();
 
-app.use("/test", (req, res) => {
-  res.send("hello from the test page");
-});
-
 app.use("/", (req, res) => {
   res.send("hello from the server");
+});
+
+app.use("/test", (req, res) => {
+  res.send("hello from the test page");
 });
 
 app.use("/help", (req, res) => {
