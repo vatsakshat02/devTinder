@@ -1,0 +1,18 @@
+- Create a repository
+- Intialize the repository
+- Node_module, package.json, package-lock.json
+- Install express
+- Listen on port 3000
+- Write request handlers
+- Install nodemon and update the scripts inside package.json
+- What are dependencies
+- What is the use of "-g" while npm install
+- Difference between Caret and Tilde
+
+- Intialize git
+- .gitignore
+- Push all code to remote origin '
+- Play with routes and route extensions ex ./hello
+- Order of routes matter a lot
+- Install Postman app and make a workspace/collection > test API call
+- Write logic to handle GET, POSt, PATCH, DELETE API calls in postman
