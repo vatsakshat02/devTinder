@@ -15,4 +15,4 @@
 - Play with routes and route extensions ex ./hello
 - Order of routes matter a lot
 - Install Postman app and make a workspace/collection > test API call
-- Write logic to handle GET, POSt, PATCH, DELETE API calls in postman
+- Write logic to handle GET, POSt, PATCH, DELETE API calls in Postman
