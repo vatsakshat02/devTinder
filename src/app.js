@@ -1,8 +1,15 @@
 const express = require("express");
-require("./config/database");
-
+const connectDB = require("./config/database");
 const app = express();
 
-app.listen(3000, () => {
-  console.log("server is listening on port 3000");
-});
+connectDB()
+  .then(() => {
+    console.log("Database has been connected successfully");
+
+    app.listen(3000, () => {
+      console.log("server is listening on port 3000");
+    });
+  })
+  .catch((err) => {
+    console.error("Database cannot be connected");
+  });
