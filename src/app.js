@@ -15,7 +15,7 @@ app.post("/signup", async (req, res) => {
     res.status(400).send("Error saving the user: " + err.message);
   }
 });
-
+//get user by email
 app.get("/user", async (req, res) => {
   const userEmail = req.body.mailID;
 
@@ -31,6 +31,7 @@ app.get("/user", async (req, res) => {
   }
 });
 
+//Feed API - get all the users from the database
 app.get("/feed", async (req, res) => {
   try {
     const users = await User.find({});
@@ -40,7 +41,32 @@ app.get("/feed", async (req, res) => {
   }
 });
 
-app.delete("/user");
+//Delete API - to delete an user from the database
+app.delete("/user", async (req, res) => {
+  const userId = req.body.userId;
+
+  try {
+    const user = await User.findByIdAndDelete(userId);
+    res.send("user deleted successfully");
+  } catch (err) {
+    res.status(400).send("something went wrong");
+  }
+});
+
+//Update API - to update an user in the database
+app.patch("/user", async (req, res) => {
+  const userId = req.body.userId;
+  const data = req.body;
+  try {
+    await User.findByIdAndUpdate(userId, data, {
+      returnDocument: "after",
+      runValidators: true,
+    });
+    res.send("user updated successfully");
+  } catch (err) {
+    res.status(400).send("something went wrong ");
+  }
+});
 
 connectDB()
   .then(() => {
