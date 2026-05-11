@@ -65,6 +65,12 @@ app.post("/login", async (req, res) => {
 //Profile Api
 app.get("/profile", async (req, res) => {
   const cookies = req.cookies;
+  const { token } = cookies;
+
+  //validate my token
+  const decodedMessage = await jwt.verify(token, "DEV@Tinder790");
+  const { _id } = decodedMessage;
+
   res.send("Reeading cookies");
 });
 
