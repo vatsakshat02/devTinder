@@ -4,8 +4,11 @@ const app = express();
 const User = require("./models/user");
 const { validateSignupData } = require("./utils/validation");
 const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 
 app.use(express.json());
+app.use(cookieParser());
 
 //signup Api
 app.post("/signup", async (req, res) => {
@@ -44,6 +47,10 @@ app.post("/login", async (req, res) => {
     const isPasswordvalid = bcrypt.compare(password, user.password);
 
     if (isPasswordvalid) {
+      //generate a JWT token
+      res.cookie("token", "hdhjKXKAHGXALXJAKHXJHAXUAU");
+      //Add the token to cookie and send the response to the user
+
       res.send("login successfull");
     } else {
       res.send("Password is not correct");
@@ -51,6 +58,12 @@ app.post("/login", async (req, res) => {
   } catch (err) {
     res.status(400).send("Error saving the user: " + err.message);
   }
+});
+
+//Profile Api
+app.get("/profile", async (req, res) => {
+  const cookies = req.cookies;
+  res.send("Reeading cookies");
 });
 
 //get user by email
