@@ -49,7 +49,9 @@ app.post("/login", async (req, res) => {
 
     if (isPasswordvalid) {
       //generate a JWT token
-      const token = await jwt.sign({ _id: user._id }, "DEV@Tinder$790");
+      const token = await jwt.sign({ _id: user._id }, "DEV@Tinder$790", {
+        expiresIn: "7d",
+      });
       res.cookie("token", token);
 
       //Add the token to cookie and send the response to the user
